@@ -1,5 +1,7 @@
 const dotenv = require('dotenv');
 const fs = require('fs');
+const { spawn } = require('child_process');
+const path = require('path');
 
 // Load local secrets from .env.local if present (local-only file, gitignored)
 if (fs.existsSync('.env.local')) {
@@ -14,11 +16,39 @@ const User = require('./models/User');
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to database
+// -------------------------------
+// Python helper function
+// -------------------------------
+function runPythonScript(scriptPath, args = []) {
+  // Detect Python
+  let pythonCmd;
+  const venvPython = path.join(__dirname, '..', 'cheating_detection', '.venv', 'Scripts', 'python.exe');
+  pythonCmd = fs.existsSync(venvPython) ? venvPython : (process.platform === 'win32' ? 'python' : 'python3');
+
+  const pythonProcess = spawn(pythonCmd, ['run.py'], {
+    env: process.env,
+    cwd: path.join(__dirname, '..', 'cheating_detection'), // Ensure cwd is correct
+  });
+
+  pythonProcess.stdout.on('data', (data) => {
+    console.log(`Python stdout: ${data.toString()}`);
+  });
+
+  pythonProcess.stderr.on('data', (data) => {
+    console.error(`Python stderr: ${data.toString()}`);
+  });
+
+  pythonProcess.on('close', (code) => {
+    console.log(`Python script exited with code ${code}`);
+  });
+}
+
+// -------------------------------
+// Connect to DB and start server
+// -------------------------------
 connectDB()
   .then(async () => {
     // Ensure MongoDB indexes declared in schemas are actually created.
-    // This is critical for preventing duplicate accounts (e.g., duplicate emails) in race conditions.
     try {
       await User.syncIndexes();
       console.log('✅ User indexes synced');
@@ -38,6 +68,13 @@ connectDB()
       });
     });
 
+    // -------------------------------
+    // ✅ TEST: Spawn Python script (optional)
+    // -------------------------------
+    // Remove this call in production, or trigger only when needed
+    runPythonScript('cheating_detection/run.py');
+
+    // Start Express server
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

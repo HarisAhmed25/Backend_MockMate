@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev-node": "nodemon src/server.js",
-    "start:python": "cd cheating_detection && py run.py",
-    "dev": "concurrently -k -n \"NODE,PYTHON\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev-node\" \"npm run start:python\"",
+    "start": "node src/server.js",        
+    "dev-node": "nodemon src/server.js",       
+    "start:python": "cd cheating_detection && python3 run.py", 
+    "dev": "concurrently -k -n \"NODE,PYTHON\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev-node\" \"npm run start:python\"", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
