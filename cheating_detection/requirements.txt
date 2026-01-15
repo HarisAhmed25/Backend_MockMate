@@ -1,0 +1,15 @@
+# FastAPI and server dependencies
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+
+# Computer Vision and ML
+ultralytics
+opencv-python
+numpy
+Pillow
+
+# Additional utilities
+python-dotenv
+requests
