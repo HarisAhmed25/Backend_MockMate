@@ -53,7 +53,7 @@ const upload = multer({
 
 // CORS configuration for Google OAuth
 const corsOptions = {
-  origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
+  origin: process.env.FRONTEND_ORIGIN || 'https://mockmate-frontend-six.vercel.app',
   credentials: true, // Allow cookies if using HTTP-only cookies
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

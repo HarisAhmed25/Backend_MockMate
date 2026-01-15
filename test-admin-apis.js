@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://mockmate-frontend-six.vercel.app/api';
 // You will need to replace these with actual JWT tokens during testing
 const ADMIN_TOKEN = 'YOUR_ADMIN_JWT_HERE';
 const USER_TOKEN = 'YOUR_USER_JWT_HERE';

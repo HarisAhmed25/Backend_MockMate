@@ -8,7 +8,7 @@ module.exports = {
 
   servers: [
     {
-      url: process.env.SERVER_URL || "http://localhost:5000",
+      url: process.env.SERVER_URL || "https://mockmate-frontend-six.vercel.app",
       description: "Local development server"
     }
   ],
@@ -1701,17 +1701,17 @@ module.exports = {
                   }
                 }
               }
-            }
-          },
-          404: {
-            description: "Interview not found, not completed, or access denied",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    success: { type: "boolean", example: false },
-                    message: { type: "string", example: "Interview not found, not completed, or access denied" }
+            },
+            404: {
+              description: "Interview not found, not completed, or access denied",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      success: { type: "boolean", example: false },
+                      message: { type: "string", example: "Interview not found, not completed, or access denied" }
+                    }
                   }
                 }
               }

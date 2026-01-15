@@ -4,7 +4,7 @@
 
 const axios = require('axios');
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://mockmate-frontend-six.vercel.app/api';
 const TOKEN = 'YOUR_JWT_TOKEN'; 
 const USER_ID = 'YOUR_USER_ID'; 
 const INTERVIEW_ID = 'YOUR_INTERVIEW_ID'; 
