@@ -7,6 +7,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
+import os
 import uvicorn
 from services.detection_service import DetectionService
 
@@ -148,11 +149,6 @@ async def detect_cheating_base64(data: dict):
 
 
 if __name__ == "__main__":
-    # Run server (for development)
-    uvicorn.run(
-        "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+    port = int(os.getenv("PORT", 8000))  # fallback 8000
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 
