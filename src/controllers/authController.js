@@ -402,7 +402,7 @@ exports.googleAuthStart = async (req, res) => {
     console.log('  - GOOGLE_CLIENT_ID:', clientId ? '✅ Set (' + clientId.substring(0, 30) + '...)' : '❌ Missing');
     console.log('  - GOOGLE_CLIENT_SECRET:', clientSecret ? '✅ Set' : '❌ Missing');
     console.log('  - GOOGLE_REDIRECT_URI:', redirectUri || '❌ Missing');
-    console.log('  - Expected redirect URI: http://localhost:5000/api/auth/google/callback');
+    console.log('  - Expected redirect URI: https://mockmate-frontend-six.vercel.app/auth/google/callback');
 
     if (!clientId || !clientSecret || !redirectUri) {
       console.error('❌ Google OAuth configuration missing');
@@ -415,10 +415,10 @@ exports.googleAuthStart = async (req, res) => {
     }
 
     // Verify redirect URI format
-    if (redirectUri !== 'http://localhost:5000/api/auth/google/callback') {
+    if (redirectUri !== 'https://mockmate-frontend-six.vercel.app/auth/google/callback') {
       console.warn('⚠️ WARNING: Redirect URI mismatch!');
       console.warn('  Current:', redirectUri);
-      console.warn('  Expected: http://localhost:5000/api/auth/google/callback');
+      console.warn('  Expected: https://mockmate-frontend-six.vercel.app/auth/google/callback');
       console.warn('  Make sure Google Cloud Console has the EXACT same URI!');
     }
 
@@ -512,7 +512,7 @@ exports.googleAuthCallback = async (req, res) => {
     console.log('  - GOOGLE_CLIENT_SECRET:', clientSecret ? '✅ Set' : '❌ Missing');
     console.log('  - GOOGLE_REDIRECT_URI:', redirectUri || '❌ Missing');
     console.log('  - FRONTEND_ORIGIN:', frontendOrigin);
-    console.log('  - Expected redirect URI: http://localhost:5000/api/auth/google/callback');
+    console.log('  - Expected redirect URI: https://mockmate-frontend-six.vercel.app/auth/google/callback');
 
     if (!clientId || !clientSecret || !redirectUri) {
       console.error('❌ Google OAuth configuration missing');
@@ -520,10 +520,10 @@ exports.googleAuthCallback = async (req, res) => {
     }
 
     // Verify redirect URI format
-    if (redirectUri !== 'http://localhost:5000/api/auth/google/callback') {
+    if (redirectUri !== 'https://mockmate-frontend-six.vercel.app/auth/google/callback') {
       console.warn('⚠️ WARNING: Redirect URI mismatch!');
       console.warn('  Current:', redirectUri);
-      console.warn('  Expected: http://localhost:5000/api/auth/google/callback');
+      console.warn('  Expected: https://mockmate-frontend-six.vercel.app/auth/google/callback');
       console.warn('  Make sure Google Cloud Console has the EXACT same URI!');
     }
 
